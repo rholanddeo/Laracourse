@@ -18,6 +18,7 @@ Laracourse website kursus sederhana, dibangun menggunakan client-server arsitekt
 ![Laracourse-course](https://github.com/rholanddeo/Laracourse/assets/121206148/54b5c776-0769-4a47-ba3c-fa80bcc4212e)
 ![Laracourse-edit_detail_add-materi](https://github.com/rholanddeo/Laracourse/assets/121206148/cbdd331c-2d7c-440f-acc7-12fe6435ac6c)
 ![Laracourse-materi](https://github.com/rholanddeo/Laracourse/assets/121206148/71d3119a-7d4d-4fff-9dcb-7799a8584bff)
+![mobile (2)](https://github.com/rholanddeo/Laracourse/assets/121206148/62422b55-f840-49ca-bb7a-21a30ca04a59)
 ![mobile](https://github.com/rholanddeo/Laracourse/assets/121206148/a6630664-e198-43ca-9892-ee30fdf3b42a)
 ![mobile (1)](https://github.com/rholanddeo/Laracourse/assets/121206148/265a84d7-5a0b-4173-ad18-857a934aa22c)
 
