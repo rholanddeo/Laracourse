@@ -10,3 +10,6 @@ Laracourse website kursus sederhana, dibangun menggunakan client-server arsitekt
 6. Pastikan pada SANCTUM_STATEFUL_DOMAINS dalam .env pada laracourse(backend) sama dengan port localhost server laracourse(frontend)
 7. Maka aplikasi siap dioperasikan
 8. Note: masih ada bug pada bagian materi, untuk materi baru bisa ditambahkan pada halaman detail/edit course!
+
+# views
+![Laracourse-home](https://github.com/rholanddeo/Laracourse/assets/121206148/43248925-cb10-4dc8-88e4-86d66c2cf7d6)
