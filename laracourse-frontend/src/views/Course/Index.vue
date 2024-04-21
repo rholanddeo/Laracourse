@@ -29,7 +29,8 @@
                                 </div>
                                 <div class="lg:col-end-13 lg:col-span-4">
                                     <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg aria-hidden="true" class="w-4 h-4 text-gray-500" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -103,14 +104,14 @@
                     <div class="text-sm text-gray-700">
                         Showing <span class="font-semibold">{{ state.courses.current_page }}</span> to <span
                             class="font-semibold">{{ state.courses.per_page }}</span> of <span class="font-semibold">{{
-                                state.courses.total }}</span> Entries
+                            state.courses.total }}</span> Entries
                     </div>
 
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="">
                         <ul class="inline-flex -space-x-px text-sm gap-2">
                             <template v-for="link in state.courses.links" :key="link.label">
                                 <li>
-                                    <a href="#" @click="pagination(link.url)"
+                                    <a href="javascript:;" @click="pagination(link.url)"
                                         class="px-3 py-2 ml-0 leading-tight border rounded-lg"
                                         :class="link.active ? 'bg-blue-600 border-blue-600 text-white' : 'text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700'">
                                         {{ link.label }}
@@ -135,15 +136,17 @@
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Course Code</label>
                                 <input type="text" v-model="form.code"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <p class="mt-2 text-sm text-red-600" v-if="state.errors['code']">{{ state.errors['code'][0]
-                                }}</p>
+                                <p class="mt-2 text-sm text-red-600" v-if="state.errors['code']">{{
+                                    state.errors['code'][0]
+                                    }}</p>
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Course Name</label>
                                 <input type="text" v-model="form.name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <p class="mt-2 text-sm text-red-600" v-if="state.errors['name']">{{ state.errors['name'][0]
-                                }}</p>
+                                <p class="mt-2 text-sm text-red-600" v-if="state.errors['name']">{{
+                                    state.errors['name'][0]
+                                    }}</p>
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Duration</label>
@@ -291,7 +294,7 @@ export default {
         }
 
         return {
-            state, getCategories, getCourses, createCourse, form, deleteCourse, filter, pagination
+            state, getCategories, getCourses, createCourse, form, deleteCourse, filter, pagination,
         }
     }
 }
