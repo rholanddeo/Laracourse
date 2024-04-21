@@ -13,9 +13,9 @@
                                 <div class="lg:col-span-auto">
                                     <select v-model="filter.ordering"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option value="5">5</option>
                                         <option value="10">10</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
+                                        <option value="20">20</option>
                                     </select>
                                 </div>
                                 <div class="lg:col-span-3">
@@ -257,7 +257,7 @@ export default {
         }
 
         const filter = reactive({
-            ordering: 10,
+            ordering: 5,
             course: "",
             search: "",
             page: 1,
