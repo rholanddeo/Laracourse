@@ -89,7 +89,9 @@
                                     </td>
                                     <td class="px-6 py-4 flex gap-3">
                                         <router-link :to="`/materi/${materi.id}/edit`"
-                                            class="font-medium text-green-600 hover:underline">Edit</router-link>
+                                            class="font-medium text-green-600 hover:underline">
+                                            Edit
+                                        </router-link>
                                         <a href="#!" @click.prevent="deleteMateri(materi.id)"
                                             class="font-medium text-red-600 hover:underline">Delete</a>
                                     </td>
@@ -158,8 +160,6 @@
                                 }}</p>
                             </div>
                             
-
-
                             <div class="mb-6">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Course</label>
                                 <select v-model="form.course_id"
@@ -192,23 +192,14 @@ export default {
 
         // define state
         const state = ref({
-            categories: [],
             courses: [],
             materis: [],
             errors: [],
         })
 
-        // panggil data categories dari api
-        const getCategories = async () => {
-            let { data } = await axios.get('/api/categories')
-
-            // data response dikirim ke state categories
-            state.value.categories = data
-        }
-
         // panggil data courses dari api
         const getCourses = async () => {
-            let { data } = await axios.get('/api/courses')
+            let { data } = await axios.get('/api/kursus')
 
             // data response dikirim ke state courses
             state.value.courses = data
@@ -222,14 +213,12 @@ export default {
 
             // data response dikirim ke state materis
             state.value.materis = data
+
         }
 
         onMounted(() => {
             // load course
             getCourses()
-
-            // load category
-            getCategories()
 
             // load materi
             getMateris()
@@ -299,8 +288,11 @@ export default {
         }
 
         return {
-            state, getCourses, getMateris, createMateri, form, getCategories, deleteMateri, filter, pagination
+            state, getCourses, getMateris, createMateri, form, deleteMateri, filter, pagination
         }
+
+
     }
 }
+
 </script>

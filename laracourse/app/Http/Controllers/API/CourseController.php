@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Materi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +16,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         // define model course
-        $courses = Course::with('category');
+        $courses = Course::with(['category', 'materis']);
 
         // filter
         if(@$request['search']) {
@@ -33,6 +34,18 @@ class CourseController extends Controller
 
         // return response
         return response()->json($courses);
+    }
+
+    public function material($id){
+        $material = Materi::where('course_id', $id)->get();
+        return response()->json($material);
+    }
+
+    public function materis(Course $course)
+    {
+        $materis = $course->materis;
+
+        return response()->json($materis);
     }
 
     /**

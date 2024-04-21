@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Course;
+use App\Models\Materi;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -15,5 +17,6 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+    $course = Course::find(1);
+    dd($course);
+});

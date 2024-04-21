@@ -16,7 +16,6 @@ class MateriController extends Controller
      */
     public function index(Request $request)
     {
-
         // define model materi
         $materis = Materi::with('course');
 
@@ -33,13 +32,15 @@ class MateriController extends Controller
 
         $materis = $materis->latest()->paginate($request['ordering'] ?? 10);
 
-
-
-
-
         // return response
         return response()->json($materis);
     }
+
+    public function kursus(){
+        $course = Course::all();
+        return response()->json($course);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,7 +57,6 @@ class MateriController extends Controller
     {
         // validation
     $validation = Validator::make($request->all(), [
-        // 'slug' => 'required|unique:materi',
         'subject' => 'required',
         'content' => 'required',
         'link' => 'required',
@@ -78,9 +78,7 @@ class MateriController extends Controller
         'subject' => $request->subject,
         'content' => $request->content,
         'link' => $request->link,
-        // 'course_id' => $request->course_id,
-        'course_id' => 1,
-
+        'course_id' => $request->course_id,
     ]);
 
     // return response

@@ -1,12 +1,8 @@
 <template>
-    
     <div class="container pb-10  pt-20">
         <div class="mb-4">
             <router-link to="/course" class="text-blue-500 underline">Kembali</router-link>
           </div>
-
-          
-          
           <div class="border rounded-lg bg-white mb-5">
             <div class="border-b p-4">
               <p class="text-lg font-semibold">Course Materi</p>
@@ -33,24 +29,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-white border-t" v-for="(materi, index) in state.materis.data"
-                                    :key="materi.id">
+                                <tr class="bg-white border-t" v-for="(material, index) in state.material"
+                                    :key="material.id">
                                     <td class="px-6 py-4">
                                         {{ index + 1 }}.
                                     </td>
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ materi.subject }}
+                                        {{ material.subject }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ materi.content }}
+                                        {{ material.content }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ materi.link }}
+                                        {{ material.link }}
                                     </td>
                                     <td class="px-6 py-4 flex gap-3">
                                         <!-- <router-link :to="`/materi/${materi.id}/edit`"
                                             class="font-medium text-green-600 hover:underline">Edit</router-link> -->
-                                        <a href="#!" @click.prevent="deleteMateri(materi.id)"
+                                        <a href="#!" @click.prevent="deleteMateri(material.id)"
                                             class="font-medium text-red-600 hover:underline">Delete</a>
                                     </td>
                                 </tr>
@@ -129,6 +125,8 @@
                                     state.errors['duration'][0] }}</p>
                             </div>
 
+                            <input type="text" v-model="form.course_id" hidden>
+
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Description</label>
                                 <textarea v-model="form.description"
@@ -175,9 +173,10 @@ export default {
 
     // define state
     const state = ref({
-      errors: [],
+      materis: [],
+      material: [],
       categories: [],
-      materis:[]
+      errors: [],
     })
 
     // define variable form untuk menampung value dari setiap inputan
@@ -206,6 +205,7 @@ export default {
       form.duration = data.duration
       form.description = data.description
       form.category_id = data.category_id
+      form.course_id = data.id
     }
 
     // get data category
@@ -224,6 +224,14 @@ export default {
       }
     }
 
+    const getMaterial = async () => {
+      let { data } = await axios.get(`/api/material/${id}`)
+
+      // data response dikirim ke state courses
+      state.value.material = data
+      console.log(data)
+    }
+
     // panggil data materis dari api
     const getMateris = async () => {
             let { data } = await axios.get('/api/materis')
@@ -240,6 +248,7 @@ export default {
 
                 // Jika proses berhasil maka panggil getMateris() untuk mendapatkan data terbaru
                 getMateris()
+                getMaterial()
             } catch (error) {
                 // jika gagal, masukan response error pada state errors
                 state.value.errors = error.response.data.errors;
@@ -249,7 +258,8 @@ export default {
     onMounted(() => {
       getCourse(),
       getCategories(),
-      getMateris()
+      getMateris(),
+      getMaterial()
     });
 
     // fungsi delete course
@@ -260,10 +270,11 @@ export default {
 
         // Jika proses berhasil maka panggil getCourses() untuk mendapatkan data terbaru
         getMateris()
+        getMaterial()
         }
 
     return {
-      state, getCourse, updateCourse, form, getCategories, getMateris, deleteMateri, createMateri
+      state, getCourse, updateCourse, form, getCategories, getMateris, getMaterial, deleteMateri, createMateri
     }
   }
 }

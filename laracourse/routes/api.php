@@ -6,6 +6,7 @@ use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\MateriController;
 use App\Models\Course;
+use App\Models\Materi;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,12 @@ Route::middleware('auth:sanctum')->group(function() {
     // route for course
     Route::apiResource('courses', CourseController::class);
 
-    // route for course
+    // route for materi
     Route::apiResource('materis', MateriController::class);
+
+    Route::get('kursus', [MateriController::class, 'kursus']);
+    Route::get('material/{course}', [CourseController::class, 'material']);
+
+    Route::get('courses/{id}/materis', 'CourseController@materis');
 
 });

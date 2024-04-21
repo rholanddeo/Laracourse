@@ -25,6 +25,6 @@ class Category extends Model
 
     public function courses()
     {
-        return $this->hasMany(Courset::class);
+        return $this->hasMany(Course::class);
     }
 }
