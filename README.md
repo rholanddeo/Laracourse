@@ -4,14 +4,11 @@ Laracourse website kursus sederhana, dibangun menggunakan client-server arsitekt
 # How to Use
 1. Clone Laracourse Repository
 ```bash
-    git clone https://github.com/rholanddeo/laracourse.git
+git clone https://github.com/rholanddeo/laracourse.git
 ```
 
 2. Buka File laracourse-backend copy `env` ke `.env`
 3. kemudian jalankan perintah sebagaimana kita mengkonfigurasi laravel baru pada umumnya
-```bash
-composer install
-```
 ```bash
 composer install
 ```
