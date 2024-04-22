@@ -10,31 +10,31 @@ Laracourse website kursus sederhana, dibangun menggunakan client-server arsitekt
 2. Buka File laracourse-backend copy `env` ke `.env`
 3. kemudian jalankan perintah sebagaimana kita mengkonfigurasi laravel baru pada umumnya
 ```bash
-    composer install
+composer install
 ```
 ```bash
-    composer install
+composer install
 ```
 ```bash
-    php artisan migrate --seed
+php artisan migrate --seed
 ```
 ```bash
-    php artisan key:generate
+php artisan key:generate
 ```
 
 3. Jalankan server laracourse-backend : 
 ```bash
-    php artisan serve
+php artisan serve
 ```
 
 4. Buka File Laracourse-frontend kemudian jalankan
 ```bash
-    npm install
+npm install
 ```
 
 5. Jalankan client laracourse-frontend:
 ```bash
-    npm run dev
+npm run dev
 ```
 
 6. Pastikan pada `SANCTUM_STATEFUL_DOMAINS = ` dalam `.env` pada laracourse-backend sama dengan port localhost server laracourse-frontend, misal `SANCTUM_STATEFUL_DOMAINS = localhost:5173`
