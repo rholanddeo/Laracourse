@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\CategoryController;
-use App\Http\Controllers\API\CourseController;
-use App\Http\Controllers\API\MateriController;
 use App\Models\Course;
 use App\Models\Materi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\MateriController;
+use App\Http\Controllers\API\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,9 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::get('courses/{id}/materis', 'CourseController@materis');
 
+    // route for user
+    Route::apiResource('users', UserController::class);
+    Route::put('user/password/{id}', [UserController::class, 'updatePassword']);
+
 });
+// Route::apiResource('users', UserController::class);

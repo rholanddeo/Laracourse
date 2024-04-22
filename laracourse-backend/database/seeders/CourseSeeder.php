@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Str;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -16,6 +16,7 @@ class CourseSeeder extends Seeder
         for ($i = 1; $i <= 20; $i++) {
             $course = new \App\Models\Course();
             $course->code = 'CRS-' . $i;
+            $course->slug = Str::slug($course->code);
             $course->name = fake()->sentence();
             $course->description = fake()->paragraph();
             $course->duration = rand(1, 10);

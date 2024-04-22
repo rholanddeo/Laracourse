@@ -17,6 +17,7 @@
           <div class="flex flex-col lg:flex-row items-center lg:ms-20">
             <router-link to="/course" :class="className">Course</router-link>
             <router-link to="/materi" :class="className">Materi</router-link>
+            <router-link to="/user" :class="className">User</router-link>
           </div>
           
           <div class="flex flex-col lg:flex-row lg:items-center whitespace-nowrap" v-if="authenticated">

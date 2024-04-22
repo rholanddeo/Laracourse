@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Materi;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
@@ -31,6 +32,7 @@ class CourseController extends Controller
         }
 
         $courses = $courses->latest()->paginate($request['ordering'] ?? 10);
+
 
         // return response
         return response()->json($courses);
@@ -82,6 +84,7 @@ class CourseController extends Controller
     // store to course
     $course = Course::create([
         'code' => $request->code,
+        'slug' => Str::slug($request->code),
         'name' => $request->name,
         'description' => $request->description,
         'duration' => $request->duration,
@@ -158,6 +161,7 @@ class CourseController extends Controller
     // update course
     $course->update([
         'code' => $request->code,
+        'slug' => Str::slug($request->code),
         'name' => $request->name,
         'description' => $request->description,
         'duration' => $request->duration,

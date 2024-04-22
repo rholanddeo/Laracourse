@@ -56,9 +56,6 @@
                                         Subject
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Content
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
                                         Link
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -77,9 +74,6 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ materi.subject }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ materi.content }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ materi.link }}
@@ -183,8 +177,10 @@
 </template>
   
 <script>
-import axios from 'axios'
+import axios from 'axios';
 import { onMounted, ref, reactive, watch } from 'vue';
+import { useToast } from "vue-toastification";
+
 
 export default {
 
@@ -196,6 +192,9 @@ export default {
             materis: [],
             errors: [],
         })
+
+    const toast = useToast();
+
 
         // panggil data courses dari api
         const getCourses = async () => {
@@ -240,9 +239,11 @@ export default {
 
                 // Jika proses berhasil maka panggil getMateris() untuk mendapatkan data terbaru
                 getMateris()
+                toast.success("Materi Added Succesfully");
             } catch (error) {
                 // jika gagal, masukan response error pada state errors
                 state.value.errors = error.response.data.errors;
+        toast.error("User Added Failed");
             }
         }
 
@@ -254,6 +255,8 @@ export default {
 
             // Jika proses berhasil maka panggil getMateris() untuk mendapatkan data terbaru
             getMateris()
+        toast.success("Materi Deleted Succesfully")
+
         }
 
         const filter = reactive({

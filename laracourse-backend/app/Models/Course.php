@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code', 'name', 'description', 'duration', 'category_id'
+        'code', 'slug', 'name', 'description', 'duration', 'category_id'
     ];
 
     public function category()

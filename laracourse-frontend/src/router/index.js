@@ -8,6 +8,14 @@ const routes = [
       component: () => import("../views/HomeView.vue"),
     },
     {
+      path: "/user",
+      name: "user",
+      component: () => import("../views/User/Index.vue"),
+      meta: {
+        auth: true,
+      },
+    },
+    {
       path: "/course",
       name: "course",
       component: () => import("../views/Course/Index.vue"),
@@ -43,6 +51,14 @@ const routes = [
         path: "/course/:id/edit",
         name: "course.edit",
         component: () => import("../views/course/Edit.vue"),
+        meta: {
+          auth: true,
+        },
+      },
+      {
+        path: "/user/:id/edit",
+        name: "user.edit",
+        component: () => import("../views/user/Edit.vue"),
         meta: {
           auth: true,
         },
